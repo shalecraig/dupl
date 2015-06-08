@@ -54,8 +54,8 @@ func (p *TextPrinter) Print(dups [][]*syntax.Node) {
 	}
 
 	sort.Sort(byNameAndLine(clones))
-	for i, cl := range clones {
-		fmt.Fprintf(p.writer, "  loc %d: %s, line %d-%d,\n", i+1, cl.filename, cl.lineStart, cl.lineEnd)
+	for _, cl := range clones {
+		fmt.Fprintf(p.writer, "    %s:%d,%d\n", cl.filename, cl.lineStart, cl.lineEnd)
 	}
 }
 
